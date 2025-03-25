@@ -1,7 +1,15 @@
 <div class="container mt-4">
-  <app-register></app-register>
+  <app-register *ngIf="!(authService.isLoggedIn | async)">
+    <hr>
+  </app-register>
 
-  <hr>
 
-  <app-quiz></app-quiz>
+
+  <app-login *ngIf="!(authService.isLoggedIn | async)">
+    <hr>
+  </app-login>
+
+
+
+  <app-quiz *ngIf="authService.isLoggedIn | async"></app-quiz>
 </div>
