@@ -1,0 +1,60 @@
+<div *ngIf="questions.length > 0; else loading" class="quiz-container">
+  <div *ngIf="currentQuestionIndex < questions.length; else result">
+    <h3 [innerHTML]="questions[currentQuestionIndex]?.question"></h3>
+
+    <div *ngFor="let answer of shuffledAnswers">
+      <button (click)="answerQuestion(answer)" class="btn btn-secondary mt-2">{{ answer }}</button>
+    </div>
+  </div>
+</div>
+
+  <ng-template #loading>
+    <div  class="quiz-container">
+      <p>Generating questions...</p>
+    </div>
+  </ng-template>
+
+  <ng-template #result>
+    <div class="result-container">
+      <button (click)="restartQuiz()" class="btn btn-secondary mt-2">Restart</button>
+      <h2>Quiz ended!</h2>
+      <p>Score: {{ score }}</p>
+      <h3>High score:</h3>
+      <button (click)="logout()" class="btn btn-danger mt-4">Logout</button>
+      <table class="scoreboard">
+        <thead>
+        <tr>
+          <th>Username</th>
+          <th>Score</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of getScores()">
+          <td>{{ item.username }}</td>
+          <td>{{ item.score }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-template>
+
+<ng-template #justResult>
+  <h3>High score:</h3>
+  <table class="scoreboard">
+    <thead>
+    <tr>
+      <th>Username</th>
+      <th>Score</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of getScores()">
+      <td>{{ item.username }}</td>
+      <td>{{ item.score }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+</ng-template>
+
+
