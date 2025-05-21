@@ -37,7 +37,7 @@ export class LoginComponent {
       }, 100);
     } else {
       setTimeout(() => {
-        alert('Hibás felhasználónév vagy jelszó!');
+        alert('Wrong username or password!');
         this.isLoading = false;
       }, 100);
     }

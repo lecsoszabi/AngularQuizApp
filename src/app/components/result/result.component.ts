@@ -9,6 +9,6 @@ export class ResultComponent {
   @Input() score!: number;
 
   getResultMessage(): string {
-    return this.score >= 5 ? 'Gratulálunk, sikeres!' : 'Sajnos nem sikerült.';
+    return this.score >= 5 ? 'You passed the test!' : 'Sorry you failed the test!.';
   }
 }
